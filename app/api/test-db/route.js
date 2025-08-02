@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongodb';
+import getClient from '@/lib/mongodb';
 
 export async function GET() {
   try {
@@ -10,7 +10,7 @@ export async function GET() {
     
     const connectionTest = async () => {
       console.log('Testing MongoDB connection...');
-      const client = await clientPromise;
+      const client = await getClient();
       console.log('✓ Client connected successfully');
       const db = client.db('surveyform');
       console.log('✓ Database accessed successfully');

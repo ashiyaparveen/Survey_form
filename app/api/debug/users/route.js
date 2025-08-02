@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongodb';
+import getClient from '@/lib/mongodb';
 
 export async function GET() {
   try {
     console.log('=== Debug: Listing all users ===');
     
-    const client = await clientPromise;
+    const client = await getClient();
     const db = client.db('surveyform');
     const users = db.collection('users');
     

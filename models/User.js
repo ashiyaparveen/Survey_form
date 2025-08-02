@@ -1,9 +1,9 @@
-import clientPromise from '@/lib/mongodb';
+import getClient from '@/lib/mongodb';
 
 export async function getUserByEmail(email) {
   try {
     console.log('getUserByEmail: Connecting to database...');
-    const client = await clientPromise;
+    const client = await getClient();
     console.log('getUserByEmail: Connected to MongoDB client');
     
     const db = client.db('surveyform');
@@ -30,7 +30,7 @@ export async function getUserByEmail(email) {
 
 export async function createUser(userData) {
   try {
-    const client = await clientPromise;
+    const client = await getClient();
     const db = client.db('surveyform');
     const users = db.collection('users');
     
@@ -44,7 +44,7 @@ export async function createUser(userData) {
 
 export async function getUserById(userId) {
   try {
-    const client = await clientPromise;
+    const client = await getClient();
     const db = client.db('surveyform');
     const users = db.collection('users');
     

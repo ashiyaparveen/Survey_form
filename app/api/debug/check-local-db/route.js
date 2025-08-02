@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongodb';
+import getClient from '@/lib/mongodb';
 
 export async function GET() {
   try {
     console.log('=== Checking Local MongoDB Connection ===');
     
-    const client = await clientPromise;
+    const client = await getClient();
     console.log('✓ Connected to MongoDB');
     
     // List all databases
